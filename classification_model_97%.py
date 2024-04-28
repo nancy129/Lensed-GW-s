@@ -101,47 +101,6 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 model = MobileNetV2(weights='imagenet', include_top=False)  # Load the pre-trained model without the top classification layers
 
-'''from tensorflow.keras import layers, models, regularizers
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ReduceLROnPlateau
-from tensorflow.keras.optimizers import SGD
-
-model = models.Sequential()
-
-
-model.add(layers.Input(shape=(614, 1)))
-
-model.add(layers.Conv1D(64, 3, activation='relu', padding='same', kernel_regularizer=regularizers.l2(0.001)))
-model.add(layers.MaxPooling1D(2))
-model.add(layers.Dropout(0.3))
-
-model.add(layers.Conv1D(128, 3, activation='relu', padding='same', kernel_regularizer=regularizers.l2(0.001)))
-model.add(layers.MaxPooling1D(2))
-model.add(layers.Dropout(0.4))
-
-model.add(layers.Conv1D(256, 3, activation='relu', padding='same', kernel_regularizer=regularizers.l2(0.001)))
-model.add(layers.MaxPooling1D(2))
-model.add(layers.Dropout(0.5))
-
-model.add(layers.Flatten())
-
-model.add(layers.Dense(256, activation='relu', kernel_regularizer=regularizers.l2(0.001)))
-model.add(layers.Dropout(0.5))
-
-model.add(layers.Dense(128, activation='relu', kernel_regularizer=regularizers.l2(0.001)))
-model.add(layers.Dropout(0.5))
-
-
-model.add(layers.Dense(1, activation='sigmoid'))
-
-
-reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=3, min_lr=0.00001)
-
-model.compile(optimizer=SGD(lr=0.0001), loss='binary_crossentropy', metrics=['accuracy'])
-
-test_loss, test_accuracy = model.evaluate(X_test, y_test)
-print(f"Test accuracy: {test_accuracy}")
-
 from tensorflow.keras import layers, models, regularizers
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ReduceLROnPlateau
@@ -188,31 +147,6 @@ model.compile(optimizer=SGD(lr=0.0001), loss='binary_crossentropy', metrics=['ac
 test_loss, test_accuracy = model.evaluate(X_test, y_test)
 print(f"Test accuracy: {test_accuracy}")
 
-"""model = models.Sequential()
-model.add(layers.Input(shape=(614, 1)))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Flatten())
-model.add(layers.Dense(32, activation='relu'))
-model.add(layers.Dense(7656,activation='relu'))
-model.add(layers.Dense(1, activation='sigmoid'))
-
-model.compile(optimizer=Adam(lr=0.00001), loss='binary_crossentropy', metrics=['accuracy'])
-model.fit(X_train, y_train, epochs=10)
-test_loss, test_accuracy = model.evaluate(X_test, y_test)
-print(f"Test accuracy: {test_accuracy}")
-
 from tensorflow.keras import layers, models
 
 model = models.Sequential()
@@ -256,31 +190,6 @@ model.add(layers.Dense(1, activation='sigmoid'))
 
 model.compile(optimizer=Adam(lr=0.00001), loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(X_train, y_train, epochs=10)
-test_loss, test_accuracy = model.evaluate(X_test, y_test)
-print(f"Test accuracy: {test_accuracy}")
-
-"""model = models.Sequential()
-model.add(layers.Input(shape=(614, 1)))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Flatten())
-model.add(layers.Dense(32, activation='relu'))
-model.add(layers.Dense(7656,activation='relu'))
-model.add(layers.Dense(1, activation='sigmoid'))
-
-model.compile(optimizer=Adam(lr=0.00001), loss='binary_crossentropy', metrics=['accuracy'])
-model.fit(X_train, y_train, epochs=20)
 test_loss, test_accuracy = model.evaluate(X_test, y_test)
 print(f"Test accuracy: {test_accuracy}")
 
@@ -331,36 +240,6 @@ test_loss, test_accuracy = model.evaluate(X_test, y_test)
 print(f"Test accuracy: {test_accuracy}")
 
 model.save
-
-"""from keras import models, layers
-from keras.optimizers import SGD
-
-# Assuming X_train, X_val, y_train, y_val, X_test, y_test are already defined
-
-model = models.Sequential()
-model.add(layers.Input(shape=(614, 1)))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=256, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=128, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Dropout(0.2))
-model.add(layers.Conv1D(filters=64, kernel_size=2, activation='relu'))
-model.add(layers.Flatten())
-model.add(layers.Dense(32, activation='relu'))
-model.add(layers.Dense(7656,activation='relu'))
-model.add(layers.Dense(1, activation='sigmoid'))
-
-model.compile(optimizer=Adam(lr=0.00001), loss='binary_crossentropy', metrics=['accuracy'])
-history = model.fit(X_train, y_train, epochs=30, validation_data=(X_val, y_val))
-test_loss, test_accuracy = model.evaluate(X_test, y_test)
-print(f"Test accuracy: {test_accuracy}")
 
 from keras import models, layers
 from keras.optimizers import SGD
